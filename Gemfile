@@ -58,4 +58,4 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "i18n-debug", "~> 1.2", :group => :development
+gem "i18n-debug", "~> 1.2", group: :development

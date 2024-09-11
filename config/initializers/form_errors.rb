@@ -1,4 +1,4 @@
-ActionView::Base.field_error_proc = -> (html_tag, instance) do
+ActionView::Base.field_error_proc = ->(html_tag, instance) do
   return html_tag if html_tag =~ /^<label/
 
   html = Nokogiri::HTML::DocumentFragment.parse(html_tag)
@@ -10,5 +10,5 @@ ActionView::Base.field_error_proc = -> (html_tag, instance) do
     </p>
   HTML
 
-  "#{html.to_s}#{error_message_markup}".html_safe
+  "#{html}#{error_message_markup}".html_safe
 end

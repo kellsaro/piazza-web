@@ -3,7 +3,7 @@ require "test_helper"
 class UserTest < ActiveSupport::TestCase
   test "requires a name" do
     @user = User.new(
-      name: "", 
+      name: "",
       email: "jhondoe@example.com",
       password: "password"
     )
@@ -15,7 +15,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "requires a valid email" do
     @user = User.new(
-      name: "John", 
+      name: "John",
       email: "",
       password: "password"
     )
@@ -44,7 +44,6 @@ class UserTest < ActiveSupport::TestCase
     )
 
     assert_not @user.valid?
-
   end
 
   test "name and email is stripped of spaces before saving" do
@@ -72,6 +71,5 @@ class UserTest < ActiveSupport::TestCase
     max_length = ActiveModel::SecurePassword::MAX_PASSWORD_LENGTH_ALLOWED
     @user.password = "a" * (max_length + 1)
     assert_not @user.valid?
-
   end
 end

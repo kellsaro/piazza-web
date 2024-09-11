@@ -5,8 +5,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get sign_up_path
     assert_response :ok
 
-    assert_difference ["User.count", "Organization.count"], 1 do
-      post sign_up_path, 
+    assert_difference [ "User.count", "Organization.count" ], 1 do
+      post sign_up_path,
         params: {
           user: {
             name: "John",
@@ -18,16 +18,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to root_path
     follow_redirect!
-    assert_select ".notification.is-success", 
-      text: I18n.t("users.create.welcome", name: "John") 
+    assert_select ".notification.is-success",
+      text: I18n.t("users.create.welcome", name: "John")
   end
 
   test "renders errors if input data is invalid" do
     get sign_up_path
     assert_response :ok
 
-    assert_no_difference ["User.count", "Organization.count"] do
-      post sign_up_path, 
+    assert_no_difference [ "User.count", "Organization.count" ] do
+      post sign_up_path,
         params: {
           user: {
             name: "John",
