@@ -31,6 +31,11 @@ module Authenticate
       Current.user.present?
     end
 
+    def log_out
+      Current.app_session&.destroy
+      cookies.delete(:app_session)
+    end
+
   private
 
     def authenticate
