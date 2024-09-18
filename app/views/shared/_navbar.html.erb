@@ -1,19 +1,22 @@
-<nav class="navbar-brand is-link" data-controller="navbar">
+<nav class="navbar has-background-link-light" role="navigation" aria-label="main navigation" data-controller="navbar">
   <div class="navbar-brand">
     <%= link_to root_path, class: "navbar-item" do %>
       <strong class="is-size-3">Piazza</strong>
     <% end %>
     <a role="button"
       class="navbar-burger"
+      aria-label="menu"
+      aria-expanded="false"
       data-navbar-target="burger"
       data-action="navbar#toggle">
+      <span></span>
       <span></span>
       <span></span>
       <span></span>
     </a>
   </div>
 
-  <navbar-menu class="navbar-menu" data-navbar-target="menu">
+  <div class="navbar-menu" data-navbar-target="menu">
     <div class="navbar-start">
       <%= link_to t(".create_ad"), "#", class: "navbar-item" %>
       <%= link_to t(".messages"), "#", class: "navbar-item" if logged_in? %>
@@ -44,6 +47,6 @@
 
       <% end %>
     </div>
-  </navbar-menu>
+  </div>
 
 </nav>
