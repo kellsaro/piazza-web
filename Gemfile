@@ -55,7 +55,10 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver"
 end
 
 gem "i18n-debug", "~> 1.2", group: :development
+
+gem "cuprite", "~> 0.15.1", group: :test
+
+gem "evil_systems", "~> 1.1", group: :test

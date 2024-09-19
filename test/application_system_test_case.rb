@@ -1,14 +1,17 @@
 require "test_helper"
 
-class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  if ENV["CAPYBARA_SERVER_PORT"]
-    served_by host: "rails-app", port: ENV["CAPYBARA_SERVER_PORT"]
+# 'capybara' and 'capybara/cuprite' need to be defined for EvilSystems to work properly.
+require "capybara"
+require "capybara/cuprite"
 
-    driven_by :selenium, using: :headless_chrome, screen_size: [ 1400, 1400 ], options: {
-      browser: :remote,
-      url: "http://#{ENV["SELENIUM_HOST"]}:4444"
-    }
-  else
-    driven_by :selenium, using: :headless_chrome, screen_size: [ 1400, 1400 ]
-  end
+require "evil_systems"
+
+EvilSystems.initial_setup
+# To pass in driver_options to cuprite you can do the following:
+# EvilSystems.initial_setup(driver_options: { process_timeout: 20 })
+
+class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
+  driven_by :cuprite
+
+  include EvilSystems::Helpers
 end
