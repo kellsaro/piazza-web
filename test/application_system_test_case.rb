@@ -14,4 +14,6 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :evil_cuprite
 
   include EvilSystems::Helpers
+
+  WINDOW_SIZE = [ 1400, 1400 ]
 end
