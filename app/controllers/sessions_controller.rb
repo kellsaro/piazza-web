@@ -13,8 +13,9 @@ class SessionsController < ApplicationController
     if @app_session
       log_in(@app_session)
 
-      flash[:success] = t(".success")
-      return redirect_to root_path, status: :see_other
+      return redirect_to root_path,
+        status: :see_other,
+        flash: { success: t(".success") }
     end
 
     flash.now[:danger] = t(".incorrect_details")
@@ -24,8 +25,9 @@ class SessionsController < ApplicationController
   def destroy
     log_out
 
-    flash[:success] = t(".success")
-    redirect_to root_path, status: :see_other
+    redirect_to root_path,
+      status: :see_other,
+      flash: { success: t(".success") }
   end
 
   private

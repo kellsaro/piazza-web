@@ -23,5 +23,14 @@ module Piazza
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Enable remote debugging in development
+    # Start the server using bin/dev and in another Terminal window, run:
+    # > bundle exec rdbg -a
+    # Check out the docs for the full list of available
+    # commands: https://github.com/ruby/debug# control-flow.
+    if defined?(Rails::Server) && Rails.env.development?
+      require "debug/open_nonstop"
+    end
   end
 end

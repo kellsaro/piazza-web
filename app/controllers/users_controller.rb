@@ -21,9 +21,29 @@ class UsersController < ApplicationController
     render :new, status: :unprocessable_entity
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+
+    if @user.update(update_params)
+      return redirect_to edit_profile_path,
+        status: :see_other,
+        flash: { success: t(".success") }
+    end
+
+    render :edit, status: :unprocessable_entity
+  end
+
   private
 
     def user_params
       params.require(:user).permit(:name, :email, :password)
+    end
+
+    def update_params
+      params.require(:user).permit(:name, :email)
     end
 end

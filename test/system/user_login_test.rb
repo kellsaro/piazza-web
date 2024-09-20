@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class UsersLoginsTest < ApplicationSystemTestCase
+class UserLoginTest < ApplicationSystemTestCase
   test "existing user can login" do
     visit root_path
     click_on I18n.t("shared.navbar.login")

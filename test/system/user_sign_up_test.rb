@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class UsersSignUpsTest < ApplicationSystemTestCase
+class UserSignUpTest < ApplicationSystemTestCase
   test "new user can sign up" do
     visit root_path
     click_on I18n.t("shared.navbar.sign_up")

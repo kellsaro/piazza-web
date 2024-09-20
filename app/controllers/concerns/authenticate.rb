@@ -6,6 +6,7 @@ module Authenticate
     before_action :require_login, unless: :logged_in?
 
     helper_method :logged_in?
+    helper_method :current_user
   end
 
   class_methods do
@@ -28,12 +29,16 @@ module Authenticate
     end
 
     def logged_in?
-      Current.user.present?
+      current_user.present?
     end
 
     def log_out
       Current.app_session&.destroy
       cookies.delete(:app_session)
+    end
+
+    def current_user
+      Current.user
     end
 
   private
