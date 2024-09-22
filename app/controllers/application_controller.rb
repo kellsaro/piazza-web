@@ -5,4 +5,5 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   helper_method :turbo_frame_request?
+  helper_method :turbo_native_app?
 end
