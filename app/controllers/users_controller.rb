@@ -13,9 +13,8 @@ class UsersController < ApplicationController
       @app_session = @user.app_sessions.create
       log_in(@app_session)
 
-      return redirect_to root_path,
-        status: :see_other,
-        flash: { success: t(".welcome", name: @user.name) }
+      flash[:success] = t(".welcome", name: @user.name)
+      return recede_or_redirect_to root_path, status: :see_other
     end
 
     render :new, status: :unprocessable_entity
